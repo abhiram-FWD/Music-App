@@ -1,0 +1,63 @@
+@import "tailwindcss";
+
+.edit-profile-avatar-container {
+    @apply flex justify-center mb-6 relative;
+}
+
+.edit-profile-avatar {
+    @apply w-20 h-20 rounded-full border-2 border-white/10 flex items-center justify-center bg-[#1e1e1e];
+}
+
+.edit-profile-camera-btn {
+    @apply absolute bottom-0 right-[35%] w-8 h-8 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 flex items-center justify-center border-2 border-[#0b0b0b] cursor-pointer hover:scale-110 transition-transform;
+}
+
+.edit-profile-input-group {
+    @apply flex flex-col gap-2 mb-4;
+}
+
+.edit-profile-label {
+    @apply text-sm font-semibold text-gray-300;
+}
+
+.edit-profile-input {
+    @apply w-full h-12 px-4 bg-[#1e1e1e] border border-white/10 rounded-lg text-white focus:outline-none focus:border-purple-500 transition-colors;
+}
+
+.edit-profile-link {
+    @apply text-sm text-purple-400 hover:text-purple-300 cursor-pointer inline-block mt-2 mb-6;
+}
+
+.edit-profile-actions {
+    @apply flex justify-center gap-4 mt-4;
+}
+
+.edit-profile-btn-cancel {
+    @apply px-6 py-2 rounded-xl bg-[#1e1e1e] text-white font-semibold border border-white/10 hover:bg-[#2a2a2a] transition-colors;
+}
+
+.edit-profile-btn-save {
+    @apply px-8 py-2 rounded-xl bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold shadow-lg shadow-purple-500/30 hover:shadow-purple-500/50 hover:scale-105 transition-all;
+}
+
+.modal-content.edit-profile-modal {
+    @apply bg-[#0b0b0b] border border-white/10 p-8 rounded-2xl w-[400px];
+    position: relative;
+    animation: modalPopIn 0.3s ease-out;
+}
+
+.modal-close-icon {
+    @apply absolute top-4 right-4 text-gray-400 hover:text-white cursor-pointer;
+}
+
+@keyframes modalPopIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}

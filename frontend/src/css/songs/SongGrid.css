@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+.song-grid-container {
+  @apply p-4 grid gap-6;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  animation: fadeIn 0.5s ease-out;
+}
+
+.song-grid-card {
+  @apply relative flex flex-col items-center p-3 rounded-lg overflow-hidden transition-all duration-300;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.song-grid-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.song-grid-image {
+  @apply w-full aspect-square object-cover rounded-md mb-3 shadow-lg;
+  transition: transform 0.3s ease;
+}
+
+.song-grid-card:hover .song-grid-image {
+  transform: scale(1.05);
+}
+
+.song-grid-info {
+  @apply w-full flex flex-col items-start;
+}
+
+.song-grid-title {
+  @apply text-white font-semibold text-sm truncate w-full mb-1;
+}
+
+.song-grid-artist {
+  @apply text-gray-400 text-xs truncate w-full;
+}
+
+.song-grid-play-btn {
+  @apply absolute bottom-24 right-4 w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center opacity-0 translate-y-4 shadow-xl transition-all duration-300;
+}
+
+.song-grid-card:hover .song-grid-play-btn {
+  @apply opacity-100 translate-y-0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
