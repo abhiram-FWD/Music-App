@@ -1,112 +1,192 @@
-🎵 Synthesia – Spotify Clone (MERN Stack Project)
+# 🎵 Synthesia — Spotify Clone
 
-Synthesia is a modern music streaming web application inspired by Spotify, built using the MERN Stack (MongoDB, Express.js, React.js, Node.js).
+> A modern music streaming web application inspired by Spotify, built using the MERN Stack as part of the WebStack Internship Program.
 
-This project was developed as part of my WebStack Internship Program and submitted for internship evaluation and certification.
+---
 
-🚀 Project Overview
+## 🚀 Project Overview
 
-Synthesia replicates the core features of a real-world music streaming platform, including dynamic song browsing, album-based navigation, and seamless audio playback.
+Synthesia replicates the core features of a real-world music streaming platform — dynamic song browsing, album-based navigation, and seamless audio playback.
 
-The main objective of this project was to demonstrate full stack development skills by integrating frontend UI, backend APIs, and database management into a complete working application.
+The main objective was to demonstrate full-stack development skills by integrating a responsive frontend UI, RESTful backend APIs, and database management into a complete working application.
 
-🛠️ Tech Stack
-Frontend
+---
 
-React.js (Vite)
+## 🛠️ Tech Stack
 
-Tailwind CSS
+| Layer | Technology |
+|---|---|
+| Frontend | React.js (Vite) + CSS Modules + React Router DOM |
+| Backend | Node.js + Express.js |
+| Database | MongoDB + Mongoose |
+| File Handling | Multer (audio and image uploads) |
+| Cloud Storage | Cloudinary |
+| Audio Playback | HTML Audio API |
 
-React Router DOM
+---
 
-Backend
+## 🎧 Features
 
-Node.js
+- Play, pause, seek, and volume control
+- Category-based browsing — Workout, Chill, Happy, Relaxing, Rock
+- Album view with cover art and full song list
+- Dynamic data fetching via REST APIs
+- User authentication — Login and Signup
+- Edit profile functionality
+- Admin panel for managing songs and albums
+- Responsive modern dark UI
 
-Express.js
+---
 
-Database
+## 📁 Project Structure
 
-MongoDB
+```
+Project/
+├── backend/
+│   ├── config/
+│   │   ├── cloudinary.js          # Cloudinary storage config
+│   │   └── db.js                  # MongoDB connection
+│   ├── controllers/
+│   │   ├── albumController.js     # Album CRUD logic
+│   │   ├── songController.js      # Song CRUD logic
+│   │   └── userController.js      # User auth and profile logic
+│   ├── middleware/
+│   │   ├── authMiddleware.js      # JWT route protection
+│   │   └── multer.js              # File upload config
+│   ├── models/
+│   │   ├── albumModel.js          # Album schema
+│   │   ├── songModel.js           # Song schema
+│   │   └── userModel.js           # User schema
+│   ├── routes/
+│   │   ├── albumRoute.js
+│   │   ├── songRoute.js
+│   │   └── userRoute.js
+│   ├── uploads/                   # Local file upload directory
+│   ├── bulk_import.js             # Bulk song import script
+│   ├── seed.js                    # Database seed script
+│   ├── seed_real_songs.js         # Real songs seed script
+│   └── server.js                  # App entry point
+│
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   │   ├── auth/
+    │   │   │   ├── Auth.jsx        # Auth wrapper component
+    │   │   │   ├── Login.jsx       # Login form
+    │   │   │   └── Signup.jsx      # Signup form
+    │   │   ├── layout/
+    │   │   │   ├── Footer.jsx      # Player footer bar
+    │   │   │   ├── MainArea.jsx    # Central content area
+    │   │   │   └── SideMenu.jsx    # Left sidebar navigation
+    │   │   ├── player/
+    │   │   │   ├── ControlArea.jsx # Play/pause/seek/volume controls
+    │   │   │   ├── Features.jsx    # Extra player features
+    │   │   │   ├── Playlist.jsx    # Playlist view
+    │   │   │   ├── SongDetail.jsx  # Now playing song info
+    │   │   │   └── SongList.jsx    # Song list display
+    │   │   ├── profile/
+    │   │   │   └── EditProfile.jsx # Edit user profile
+    │   │   ├── search/
+    │   │   │   └── SearchBar.jsx   # Search input component
+    │   │   └── songs/
+    │   │       └── SongGrid.jsx    # Song cards grid layout
+    │   ├── context/
+    │   │   └── PlayerContext.jsx   # Global player state (current song, play/pause, queue)
+    │   ├── css/                    # Component-scoped CSS files
+    │   │   ├── auth/               # Auth, Login, Signup, EditProfile styles
+    │   │   ├── common/             # Modal styles
+    │   │   ├── footer/             # ControlArea, Features, Footer, SongDetail styles
+    │   │   ├── mainArea/           # MainArea, Playlist, SongList styles
+    │   │   ├── pages/              # Admin, HomePage, EditProfile page styles
+    │   │   ├── search/             # SearchBar styles
+    │   │   ├── sidemenu/           # SideMenu styles
+    │   │   └── songs/              # SongCard, SongGrid styles
+    │   ├── pages/
+    │   │   ├── Admin.jsx           # Admin panel — manage songs and albums
+    │   │   └── Homepage.jsx        # Main landing/home page
+    │   ├── App.jsx                 # Root component and routing
+    │   └── main.jsx                # React entry point
+    └── index.html
+```
 
-Mongoose
+---
 
-File Handling
+## 🗄️ Database Structure
 
-Multer (for audio and image uploads)
+**Songs Collection**
+- Song name, Artist, Album reference
+- Image URL, Audio file path, Duration
 
-🎧 Features
+**Albums Collection**
+- Album name, Description
+- Background theme, Cover image
 
-Play, pause, seek, and volume control
+**Users Collection**
+- Name, Email, Hashed password
+- Profile info, Auth tokens
 
-Category-based browsing (Workout, Chill, Happy, Relaxing, Rock)
+---
 
-Album view with cover art and song list
+## 🏗️ System Architecture
 
-Dynamic data fetching via REST APIs
+```
+Frontend (React)  →  REST API (Express)  →  MongoDB  →  Audio via HTML Audio API
+                                ↕
+                          Cloudinary (media storage)
+```
 
-Responsive modern dark UI
+---
 
-Backend support for adding and managing songs and albums
+## ⚙️ Local Setup
 
-🗄️ Database Structure
-Songs Collection
+### Prerequisites
+- Node.js v18+
+- MongoDB Atlas account
+- Cloudinary account
 
-Stores:
+### Backend
+```bash
+cd backend
+npm install
+cp .env.example .env
+# Fill in MONGO_URI and Cloudinary credentials
+npm run dev
+```
 
-Song name
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
 
-Artist
+### Seed the Database
+```bash
+# Seed sample songs and albums
+node backend/seed.js
 
-Album reference
+# Or bulk import real songs
+node backend/bulk_import.js
+```
 
-Image URL
+---
 
-Audio file path
+## 📈 Future Enhancements
 
-Duration
+- Personalized playlists
+- Advanced search functionality
+- Lyrics integration
+- Mobile app version using React Native
 
-Albums Collection
+---
 
-Stores:
+## 🎓 Internship
 
-Album name
+This project was built as part of the **WebStack Internship Program**, focusing on practical implementation of full-stack web development concepts using the MERN stack. Submitted for internship evaluation and certification.
 
-Description
+---
 
-Background theme
+## 👨‍💻 Author
 
-Cover image
-
-Users Collection
-
-Structured for future authentication implementation.
-
-🏗️ System Architecture
-
-The application follows a client-server architecture:
-
-Frontend (React) → REST API (Express) → MongoDB Database → Audio Delivery via HTML Audio API
-
-This ensures efficient data flow and smooth playback performance.
-
-📈 Future Enhancements
-
-User authentication & authorization
-
-Personalized playlists
-
-Advanced search functionality
-
-Lyrics integration
-
-Mobile app version using React Native
-
-🎓 Internship Information
-
-This project was built as part of the WebStack Internship Program, focusing on practical implementation of full stack web development concepts using the MERN stack.
-
-👨‍💻 Author
-
-Abhiram Mamillapalli
+**Abhiram Mamillapalli**  
 Full Stack Web Development Enthusiast
